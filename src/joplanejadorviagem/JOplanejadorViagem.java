@@ -3,30 +3,42 @@ package joplanejadorviagem;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import javax.swing.text.DateFormatter;
 
 public class JOplanejadorViagem {
 
+    private static String entrada;
+
     public static void main(String[] args) {
-        planejador();
+        menu();
 
     }
 
-    public static void planejador() {
-
-        JOptionPane.showConfirmDialog(null, "Planejar viagem");
-
-        JOptionPane.showInputDialog("Digite seu nome:");
-
-        String data =JOptionPane.showInputDialog("digite data: ");
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    public static void menu() {
         
-        LocalDate localDate       = LocalDate.parse("2018-07-22", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        JOptionPane.showConfirmDialog(null, "===MENU===");      
         
-        JOptionPane.showConfirmDialog(null, localDate);
+        String opcao = JOptionPane.showInputDialog("1 - Planejar viagem \n2 - Sair");
 
-//        LocalDate d = LocalDate.of(2026, 2, 25);
+        if (opcao.equals("1")) {
+            
+
+        String nome = JOptionPane.showInputDialog("Digite seu nome:");
+
+        String data = JOptionPane.showInputDialog("Digite a data (dd/mm/yyyy)");
+
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            LocalDate entrada = LocalDate.parse(data, formato);
+
+            //JOptionPane.showMessageDialog(null, "Data digitada: " + entrada);
+            
+            } else if (opcao.equals("2")) {
+                JOptionPane.showConfirmDialog(null,"saiu do programa");           
+        } else {
+            
+            }
         
+        JOptionPane.showMessageDialog(null, "Data digitada: " + entrada);
     }
-
 }
